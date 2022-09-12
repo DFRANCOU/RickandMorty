@@ -1,8 +1,9 @@
-window.addEventListener("DOMContentLoaded", getCharacters)
 
-function getCharacters(gender, status,) {
+
+
+function getCharacters(gender, status, next, prev) {
     const results = fetch(
-        `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}`);
+        `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}&next=${next || ""}&prev=${prev || ""}`);
     results
           .then(response => response.json())
           .then(data => { 
@@ -29,27 +30,24 @@ function getCharacters(gender, status,) {
           
              });
           });
+          
+          data.info.forEach(pagination => {
+            const div = document.createRange().createContextualFragment(/*html*/`
+            <div>
+              <button class="buttonPn" class="prev">${pagination.next} < </button>
+              <button class="buttonPn" class="next">${pagination.prev} > </button>
+            </div>
+            `);
+
+            const pag = document.querySelector(".next_prev");
+
+            pag.append(div);
+
+          })
 
 }
 
 const params = new URLSearchParams(window.location.search)
-getCharacters(params.get("gender"), params.get("status"));
-
-const buttonP = document.querySelector(".prev")
-const buttonN = document.querySelector(".next")
-
-buttonP.addEventListener("click", pagination)
-buttonN.addEventListener("click", pagination)
+getCharacters(params.get("gender"), params.get("status"), params.get("next"), params.get("prev"));
 
 
-function pagination (done) {
-  
-  const info = fetch(
-    "https://rickandmortyapi.com/api/character/?page=2")
-  info
-        .then(response => response.json())
-        .then(data => { 
-           done(data)})
-}
-
-console.log(pagination)
