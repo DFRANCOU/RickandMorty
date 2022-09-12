@@ -1,9 +1,10 @@
 
 
 
-function getCharacters(gender, status, next, prev) {
+function getCharacters(gender, status,) {
     const results = fetch(
-        `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}&next=${next || ""}&prev=${prev || ""}`);
+        `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}`);
+
     results
           .then(response => response.json())
           .then(data => { 
@@ -30,24 +31,32 @@ function getCharacters(gender, status, next, prev) {
           
              });
           });
-          
-          data.info.forEach(pagination => {
-            const div = document.createRange().createContextualFragment(/*html*/`
-            <div>
-              <button class="buttonPn" class="prev">${pagination.next} < </button>
-              <button class="buttonPn" class="next">${pagination.prev} > </button>
-            </div>
-            `);
-
-            const pag = document.querySelector(".next_prev");
-
-            pag.append(div);
-
-          })
-
+      
 }
 
 const params = new URLSearchParams(window.location.search)
-getCharacters(params.get("gender"), params.get("status"), params.get("next"), params.get("prev"));
+getCharacters(params.get("gender"), params.get("status"));
 
+function pag(done){
+  const info = fetch(
+    `https://rickandmortyapi.com/api/character/?page=1`);
+  info
+     .then(response = response.json())
+     .then(data => {
+       done(data)
 
+   data.info.forEach(pagination => {
+     const div = document.createRange().createContextualFragment(/*html*/`
+     <div>
+       <button class="buttonPn" class="prev">${pagination.next} < </button>
+       <button class="buttonPn" class="next">${pagination.prev} > </button>
+     </div>
+     `);
+
+     const pag = document.querySelector(".next_prev");
+
+     pag.append(div);
+
+   });
+ });
+}  
