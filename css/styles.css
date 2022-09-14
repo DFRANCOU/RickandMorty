@@ -83,13 +83,17 @@ nav{
     display: flex;
     justify-content: center;
     background-color: #96C96A;
-    height: 50px;
-    padding: 20px 80px;
+    height: 100px;
+    padding: -20px;
+   
 }
+
+
 
 .ulNav{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     list-style: none;
     width: 700px; 
 }
@@ -99,26 +103,16 @@ a{
     font-size: medium;
     text-decoration: none;
     padding-top: 10px;
+   
     
 }
 
-/* section button */
-
-section{
+.pag{
     display: flex;
-    justify-content: space-between;
-    margin-top: -21px;
-}
-
-.buttonPn{
-    background-color: #96C96A;
-    font-size: medium;
-    border-style: none;
-    cursor: pointer;
-}
-
-.buttonPn:active{
-    transform: scale(0.98);
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin-top: -50px;
 }
 
 /*  characters section*/
