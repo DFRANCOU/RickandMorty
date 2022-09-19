@@ -2,6 +2,7 @@
 
 body{
     margin: 0px;
+    padding: opx;
 }
 
 header{
@@ -22,10 +23,13 @@ header{
     background-color: #D7F2F2;
     font-size: 16px;
     font-weight: bold;
-    color: #233160;
     border-radius: 10px;
     border-style: none;
     padding: 2px 20px;
+}
+
+.aboutMe{
+    color: #233160;
 }
 
 /* section basic information */
@@ -107,25 +111,29 @@ a{
     
 }
 
-.pag{
+#buttons{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    margin-top: -50px;
+    justify-content: space-between;
+    margin: -10px 30px;    
+}
+
+.buttons:active{
+    transform: scale(0.98);
+    
 }
 
 /*  characters section*/
 
 main{
     display: flex;
-    justify-content: center;
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 18px;
     background-color:#72C7D0; 
-    padding: 30px 60px;
-    align-content: center;
+    padding: 30px 30px;
+
+    
 }
 
 .cards{
