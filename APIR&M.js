@@ -71,8 +71,9 @@ function getCharacters(gender, status, prev, next) {
           .then(response => response.json())
           .then(data => { 
             //  done(data)
-                    
-            data.results.forEach(characters => {
+            
+           
+              data.results.forEach(characters => {
               
                 const article = document.createRange().createContextualFragment(/*html*/`
                 <article> 
@@ -93,24 +94,14 @@ function getCharacters(gender, status, prev, next) {
           
              });
 
-             data.info.forEach(pagination => {
+              const pagination = (info => { 
+              let html = `<li><a href="" onclick="getCharacters('${info.prev}')"> previous </a></li>`
+              html += `<li><a href=""onclick="getCharacters('${info.next}')"> next </a></li>`
+              document.getElementById("pagination").innerHTML = html
 
-              const pag = document.createRange().createContextualFragment(`
-                    <button id="prev" class="buttonPag" onclick="getCharacters('${pagination.prev}')"> << </button>  
-                    <button id="next" class="buttonPag" onclick="getCharacters('${pagination.next}')"> >> </button>`);
-
-                    const page = document.querySelector(".buttons");
-                
-                    main.append(article);
-             })
-            
-            //  const buttonPrev = document.getElementById("prev");
-            //  const buttonNext = document.getElementById("next");
-
-            //  buttonPrev.addEventListener("onclick", getCharacters);
-            //  buttonNext.addEventListener("onclick", getCharacters);
-
-          
+      
+            });
+                      
           });
       
 }
@@ -118,9 +109,11 @@ function getCharacters(gender, status, prev, next) {
 const params = new URLSearchParams(window.location.search);
 getCharacters(params.get("gender"), params.get("status"), params.get("next"), params.get("prev"));
 
-
-
-
+const pagination = (info) => { 
+  let html = `<li><a href="" onclick="getCharacters('${info.prev}')"> previous </a></li>`
+  html += `<li><a href=""onclick="getCharacters('${info.next}')"> next </a></li>`
+  document.getElementById("pagination").innerHTML = html
+}
 
 
 //  const pagination = (info) => {}

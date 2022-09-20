@@ -114,7 +114,7 @@ a{
 #buttons{
     display: flex;
     justify-content: space-between;
-    margin: -10px 30px;    
+    margin: -15px 30px;   
 }
 
 .buttons:active{
@@ -122,6 +122,13 @@ a{
     
 }
 
+.buttonPag{
+    color: black;
+    border-radius: 5px;
+    border-style: none;
+    
+
+}
 /*  characters section*/
 
 main{
