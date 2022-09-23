@@ -9,7 +9,7 @@ function getCharacters(gender, status,) {
           .then(response => response.json())
           .then(data => { 
             //  done(data)
-            
+        
             data.results.forEach(characters => {
 
                 const article = document.createRange().createContextualFragment(/*html*/`
@@ -36,6 +36,11 @@ function getCharacters(gender, status,) {
 
 const params = new URLSearchParams(window.location.search)
 getCharacters(params.get("gender"), params.get("status"));
+
+
+
+
+
 
 function pag(done){
   const info = fetch(
