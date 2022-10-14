@@ -1,26 +1,26 @@
-function getData(gender, status,) {
-  const results = fetch(
-      `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}`);
+// function getData(gender, status,) {
+//   const results = fetch(
+//       `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}`);
 
-  results
-          .then(response => response.json())
-          .then(data => { 
-            //  done(data)
+//   results
+//           .then(response => response.json())
+//           .then(data => { 
+//             //  done(data)
         
-            data.results.forEach(characters => {
+//             data.results.forEach(characters => {
 
-                const article = document.createRange().createContextualFragment(/*html*/`
-                <article> 
-                  <div class="cards">
-                    <h2>${characters.name}</h2>
-                    <div class="charaters">
-                     <img src ="${characters.image}" class="charatersIma">
-                    </div>
-                   <span id="Gender">${characters.gender}</span>
-                   <span id="aboutChar">${characters.species}</span>
-                  </div>  
-                </article> 
-                `);
+//                 const article = document.createRange().createContextualFragment(/*html*/`
+//                 <article> 
+//                   <div class="cards">
+//                     <h2>${characters.name}</h2>
+//                     <div class="charaters">
+//                      <img src ="${characters.image}" class="charatersIma">
+//                     </div>
+//                    <span id="Gender">${characters.gender}</span>
+//                    <span id="aboutChar">${characters.species}</span>
+//                   </div>  
+//                 </article> 
+//                 `);
           
 //                 const main = document.querySelector("main");
                 
@@ -48,13 +48,13 @@ function getData(gender, status,) {
 
 
 
-function pag(done){
-  const info = fetch(
-    `https://rickandmortyapi.com/api/character/?page=1`);
-  info
-     .then(response = response.json())
-     .then(data => {
-       done(data)
+// function pag(done){
+//   const info = fetch(
+//     `https://rickandmortyapi.com/api/character/?page=1`);
+//   info
+//      .then(response = response.json())
+//      .then(data => {
+//        done(data)
 
 
  

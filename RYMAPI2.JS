@@ -1,17 +1,13 @@
 
- function getData(gender, status,) {
-      const results = fetch(
-          `https://rickandmortyapi.com/api/character?gender=${gender || ""}&status=${status || ""}`);
-  
-      results
+ function getDataBy(gender, status,) {
+     getData(
+          `https://rickandmortyapi.com/api/character/?gender=${gender || ""}&status=${status || ""}`);
+      }
+      
+// const API = "https://rickandmortyapi.com/api/character/";
 
-
-
-// const API = 'https://rickandmortyapi.com/api/character/';
-
-
-// const getData = (apiURL) => {
-//         return  fetch(apiURL)
+const getData = (apiURL) => {
+        return  fetch(apiURL)
           .then(response => response.json())
           .then(json => { 
             printData(json), 
@@ -21,7 +17,7 @@
 }
 
 const printData = (data) => {
-      let html
+      let html = ''
         data.results.forEach(characters => {
             html += '<div class="cards">'
             html += `<h2>${characters.name}</h2>`
@@ -34,8 +30,6 @@ const printData = (data) => {
         });
 
         document.querySelector("main").innerHTML = html
-     
-   
 }        
 
 const pagination = (info) => { 
@@ -46,12 +40,15 @@ const pagination = (info) => {
 }
 
 const params = new URLSearchParams(window.location.search);
-getData(params.get("gender"), params.get("status"));
+// getDataBy(params.get("gender"), params.get("status"));
  
+console.log(params.toString())
 
 // getData(API);
 
 
-
+if (params.toString().length>0) {
+  getDataBy(params.get("gender"), params.get("status"));
+}
 
 
